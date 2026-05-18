@@ -5,32 +5,32 @@ package-pip=(gcovr llvm20.1.8)
 tmp="tmp-clone"
 
 # Update everything
-pacman -Sy
+pacman -Suy
 
 # loop for pacman package
-echo "installation des packets sur pacman"
+echo "Install packages"
 
 for pkg in "${packages[@]}" do
     if pacman -Q "$pkg"; them
-        echo "$pkg déjà installé sur le pc"
+        echo "$pkg is already installed"
     them 
-        echo "Installation de $pkg..."
+        echo "Install of $pkg..."
         pacman -S --noconfirm "$pkg"
     fi
 
 # loop for pip package
-echo "installation de gcovr via pip"
+echo "Install of gcovr by pip"
 
 for pippkg in "${pippkg[@]}" do
     if pip show "$pippkg"; them
-        echo "$pippkg déjà installé sur le pc"
+        echo "$pippkg is already"
     them 
-        echo "Installation de $pippkg..."
+        echo "Install of $pippkg..."
         pip install --break-system-packages "$pippkg"
     fi
 
 # step for epifaster (epiclang)
-echo "Récupération de epiclang via epifaster"
+echo "Get EpiFaster tool"
 
 mkdir -p "$tmp"
 cd "$tmp"
@@ -41,11 +41,9 @@ if git clone https://github.com/EpiSDK/EpiFaster.git; then
     elif [[ -f setup.sh ]]; then
         chmod +x setup.sh
         ./setup.sh
-    else
-        echo "Aucun script setup.sh trouvé dans le dépôt EpiFaster"
     fi
 else
-    echo "Échec du clone du dépôt EpiFaster"
+    echo "Failed ro clone repository: https://github.com/EpiSDK/EpiFaster.git"
 fi
 cd ../..
 
