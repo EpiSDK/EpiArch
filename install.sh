@@ -1,6 +1,6 @@
 #!/bin/bash
 
-packages=(git clang20 ncurses criterion make unzip)
+packages=(git clang20 ncurses criterion make downgrade unzip)
 package-pip=(gcovr llvm20.1.8)
 tmp="tmp-clone"
 
